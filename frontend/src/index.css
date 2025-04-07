@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@keyframes scrollText {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(190%);
+    }
+  }
+  
+  .animate-scroll {
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    animation: scrollText 5s linear 1;
+  }
+  .footer-link {
+    @apply text-gray-300 hover:text-yellow-400 transition-colors duration-200;
+  }
+  
+  .footer-section {
+    @apply mb-8;
+  }
+  
+  .footer-title {
+    @apply text-xl font-bold mb-4;
+  }
+  /* Add these styles at the end of index.css */
+.feature-card {
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin-bottom: 1rem;
+}
+
+.feature-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.feature-description {
+  color: #666;
+  line-height: 1.6;
+}
+.input-field {
+  @apply block w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 focus:ring-yellow-500 focus:border-yellow-500 focus:outline-none;
+}
+
+.btn-yellow {
+  @apply w-full flex justify-center py-2 px-4 text-white bg-yellow-600 rounded-lg font-medium hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500;
+}
