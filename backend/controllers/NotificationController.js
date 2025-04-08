@@ -10,12 +10,11 @@ exports.getNoficationsForUser=async(req,res)=>{
     }catch(error)
     {
         console.log(error);
-        res.status(500).json({error:"failed to retreive the notification "})
+        res.status(500).json({error:"failed to retrieve the notification "})
     }
 }
 exports.markNotificationAsRead=async(req,res)=>{
     const notificationId=req.params.id;
-
     try{
         const notification=await Notification.findById(notificationId);
         if(!notification)

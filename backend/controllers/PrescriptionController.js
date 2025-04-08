@@ -22,7 +22,8 @@ exports.createPrescription=async(req,res)=>{
     const notification=new Notification({
         sender:doctorId,
         receiver:patient.user,
-        message:`new prescription created  from your doctor`,
+        message:`new prescription created from your doctor `,
+        link:'/patient/prescriptions'
         //add link : 
     })
     await notification.save();
@@ -33,7 +34,7 @@ exports.createPrescription=async(req,res)=>{
         res.status(500).json({error:"failed to create prescription"});
     }
 }
-//get all prescriptions for a patient By id
+//get all prescriptions for a patient
 exports.getPrescriptionForPatient=async(req,res)=>{
     let patientId;
     try{
@@ -46,7 +47,7 @@ exports.getPrescriptionForPatient=async(req,res)=>{
         }
         else
             patientId=req.params.id;
-        const prescriptions=await Prescription.find({patient:patientId}).sort({datePrescribed:-1}).populate('doctor','firstName lastName ')
+        const prescriptions=await Prescription.find({patient:patientId}).sort({datePrescribed:-1}).populate('doctor');
         if(!prescriptions)
             return res.status(404).json({message:"prescriptions not found"});
         res.json(prescriptions);
@@ -56,7 +57,7 @@ exports.getPrescriptionForPatient=async(req,res)=>{
         res.status(500).json({error:"failed to retrive prescriptions"})
     }
 }
-//get all prescriptions for a patient
+
 exports.updatePrescriptionForPatient=async(req,res)=>{
 
     const {id}=req.params;

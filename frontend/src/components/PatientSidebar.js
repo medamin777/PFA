@@ -1,25 +1,30 @@
-// frontend/src/components/PatientSidebar.js
-import React, { useState } from 'react';
+
+import React, { useState ,useEffect} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Bell, Calendar, FileText, Heart, LogOut, Menu } from 'lucide-react';
+import { Bell, Calendar, User,FileText, Heart, LogOut, Menu } from 'lucide-react';
 import '../index.css';
 import api from '../services/api';
 import getImageSrc from '../assets/ImageProfile';
 
 const PatientSidebar = ({ patient }) => {
   const [notifications, setNotifications] = useState([]);
-  const [loading, setLoading] = useState(true);
+  
   const [isOpen, setIsOpen] = useState(true);
   const navigate = useNavigate();
+
+  useEffect(()=>{
+    if(patient){
+    fetchNotifications(); 
+    }
+  },[patient])
   const fetchNotifications = async () => {
     try {
-      setLoading(true);
+
       const response = await api.getNotificationsForUser();
       setNotifications(response.data.filter(n=>!n.read));
+      
     } catch (error) {
       console.error('Error fetching notifications:', error);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -50,9 +55,9 @@ const PatientSidebar = ({ patient }) => {
 
   const menuItems = [
     { icon: <Heart size={20} />, label: 'Health Parameters', path: '/patient-dashboard' },
-   
+    { icon: <FileText size={20} />, label: 'Prescriptions', path: '/patient/prescriptions'},
     { icon: <Calendar size={20} />, label: 'Appointments', path: '/patient/appointments' },
-    { icon: <FileText size={20} />, label: 'Profil', path: '/patient/health-history' },
+    { icon: <User size={20} />, label: 'Profil', path: '/patient/health-history' },
   ];
 
   return (
@@ -72,6 +77,7 @@ const PatientSidebar = ({ patient }) => {
                 alt={patient?.user?.firstName || 'Profile'}
                 className="w-full h-full object-cover"
               />
+              
             </div>
             <div>
               <h2 className="font-semibold">{patient?.user?.firstName[0].toUpperCase() + patient?.user?.firstName.slice(1)} {patient?.user?.lastName[0].toUpperCase()+ patient?.user?.lastName.slice(1)}</h2>

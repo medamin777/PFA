@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { FileIcon, Plus, FileText, Clipboard ,Trash2} from 'lucide-react';
+import { FileIcon, Plus, Clipboard ,Trash2} from 'lucide-react';
 import api from '../services/api';
 import { toast } from 'react-toastify';
 import { ToastContainer } from 'react-toastify';

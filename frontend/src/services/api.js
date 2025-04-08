@@ -53,6 +53,7 @@ api.deletePatient=(id)=>api.delete(`/patients/${id}`)
 
 api.createPrescription=(id,data)=>api.post(`/prescriptions/${id}`,data);
 api.getPrescriptionsForPatient=(Patientid)=>api.get(`/prescriptions/${Patientid}`);
+api.getPrescriptionsCurrentPatient=()=>api.get('/prescriptions');
 api.deletePrescription=(id)=>api.delete(`/prescriptions/${id}`);
 
 // health Parameter Api 

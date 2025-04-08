@@ -10,6 +10,7 @@ import DoctorDashboard from './pages/DoctorDashboard';
 import AddPatient from './pages/AddPatient';
 import PatientDetails from './pages/PatientDetails';
 import HealthParametersPage from './pages/HealthParameters'
+import PrescriptionPage from './pages/PrescriptionPage';
 
 // Create this page
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/add-patient" element={<AddPatient/>}/>
           <Route path="/patient-details/:id" element={<PatientDetails/>}/>
           <Route path="/patient-dashboard" element={<HealthParametersPage/>}/>
+          <Route path="/patient/prescriptions" element={<PrescriptionPage/>}/>
           {/* Add other routes here */}
         </Routes>
       </div>

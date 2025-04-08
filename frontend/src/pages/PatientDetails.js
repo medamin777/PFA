@@ -5,7 +5,7 @@ import api from '../services/api';
 import '../index.css';
 import PatientInfo from '../components/PatientInfo';
 import HealthParameters from '../components/HealthParameters';
-import Prescription from '../components/Prescription';
+import Prescription from '../components/PrescriptionForm';
 import DoctorSidebar from '../components/DoctorSidebar';
 const PatientDetails = () => {
   const { id } = useParams();
