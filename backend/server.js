@@ -8,6 +8,7 @@ const patientRoutes = require("./routes/patientRoutes"); // Import patient route
 const prescriptionRoutes=require("./routes/PrescriptionRoutes");
 const notificationRoutes=require("./routes/NotificationRoutes");
 const healthParameterRoutes=require("./routes/HealthParametersRoutes");
+const appointmentRoutes=require("./routes/AppointmentRoutes");
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -30,7 +31,8 @@ app.use("/api/patients", patientRoutes); // Patient routes
 app.use("/api/prescriptions",prescriptionRoutes); //Prescription routes 
 app.use("/api/notifications",notificationRoutes);  //Notification routes
 app.use("/api/healthparameters",healthParameterRoutes); //healtparemets routes 
-// Start the server
+app.use("/api/appointments",appointmentRoutes);
+//Start the server
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });

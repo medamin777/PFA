@@ -36,11 +36,11 @@ const PatientInfo = ({ patient }) => {
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-500">Phone</label>
-            <p className="mt-1 text-base font-medium text-gray-800">{patient.phone_number}</p>
+            <p className="mt-1 text-base font-medium text-gray-800">{patient?.phone_number}</p>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-500">Address</label>
-            <p className="mt-1 text-base font-medium text-gray-800">{patient.address}</p>
+            <p className="mt-1 text-base font-medium text-gray-800">{patient?.user?.address}</p>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-500">Chronic Disease</label>

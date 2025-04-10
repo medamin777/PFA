@@ -48,6 +48,7 @@ api.getPatient=(id)=>api.get(`/patients/${id}`);
 api.addPatient=(data)=>api.post('/patients',data);
 api.updatePatient=(id,data)=>api.patch(`/patients/${id}`,data)
 api.deletePatient=(id)=>api.delete(`/patients/${id}`)
+api.searchPatients = (search) => api.get(`/patients/search?search=${encodeURIComponent(search)}`);
 
 //prescription Api:
 

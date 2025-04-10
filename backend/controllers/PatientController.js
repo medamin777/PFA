@@ -83,7 +83,7 @@ exports.getAllPatientsForDoctor=async(req,res)=>{
 
     const doctorId=req.user.id;
     try{
-        const patients=await Patient.find({doctor:doctorId}).populate('user','firstName lastName email')
+        const patients=await Patient.find({doctor:doctorId}).populate('user','firstName lastName email profilePicture address')
         if(!patients)
             return res.status(404).json({message:"patients not found"});
 
@@ -103,8 +103,6 @@ exports.updatePatient=async(req,res)=>{
         const patient=await Patient.findById(id);
         if(!patient)
             return res.status(404).json({message:"patient not found"});
-        if(patient.doctor.toString()!==doctorId)
-            return res.status(403).json({message:"unauthorized"})
         const updatePatient=await Patient.findByIdAndUpdate(id,updates,{new:true}).populate('user','firstName lastName email phone_number');
         res.json(updatePatient);
     }catch(error)
@@ -126,10 +124,10 @@ exports.deletePatient=async(req,res)=>{
         await Patient.findByIdAndDelete(id);
         await User.findByIdAndDelete(patient.user);
         res.json({message:"patient deleted successfully"});
-
     }catch(error)
     {
         console.log(error);
         res.status(500).json({error:"failed to delete patient"});
     }
 }
+

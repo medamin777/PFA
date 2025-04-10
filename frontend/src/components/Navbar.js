@@ -86,9 +86,10 @@ export default function Navbar() {
         </div>
 
         <div className="hidden md:flex space-x-6">
-          <Link to="/" className="text-gray-300 font-bold hover:text-yellow-400">Home</Link>
+         
           {!isLoggedIn && (
             <>
+             <Link to="/" className="text-gray-300 font-bold hover:text-yellow-400">Home</Link>
               <Link to="/about" className="text-gray-300 font-bold hover:text-yellow-400">About</Link>
               <Link to="/contact" className="text-gray-300 font-bold hover:text-yellow-400">Contact</Link>
             </>
@@ -130,9 +131,10 @@ export default function Navbar() {
 
       {isOpen && (
         <div className="md:hidden flex flex-col space-y-4 mt-4 p-4 bg-blue-800 shadow-md w-full">
-          <Link to="/" className="text-gray-300 hover:text-yellow-400">Home</Link>
+          
           {!isLoggedIn && (
             <>
+             
               <Link to="/about" className="text-gray-300 hover:text-yellow-400">About</Link>
               <Link to="/contact" className="text-gray-300 hover:text-yellow-400">Contact</Link>
             </>

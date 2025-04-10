@@ -11,6 +11,7 @@ function DoctorDashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [user, setUser] = useState(null);
+  const [searchTerm,setSearchTerm]=useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -39,9 +40,7 @@ function DoctorDashboard() {
       setLoading(false);
     }
   };
-
- 
-
+  const filteredPatients = patients.filter(patient => {return patient?.user?.firstName?.toLowerCase().includes(searchTerm.toLowerCase()) || patient?.user?.lastName?.toLowerCase().includes(searchTerm.toLowerCase())});
   const handleAddPatient = () => {
     navigate('/add-patient');
   };
@@ -92,9 +91,18 @@ function DoctorDashboard() {
             Add New Patient
           </button>
         </div>
-        
+        <div className="mb-4">
+          <input
+            type="text"
+            placeholder="Search patients..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full md:w-1/3 p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500"
+          />
+          </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {patients.map((patient) => (
+          
+          {filteredPatients.map((patient) => (
             <PatientCard
               key={patient._id}
               patient={patient}

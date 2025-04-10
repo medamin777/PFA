@@ -10,6 +10,8 @@ router.post('/',authenticatejwt,upload.single('profilePicture'),patientcontrolle
 // get all patients for a specific doctor 
 router.get('/',authenticatejwt,patientcontroller.getAllPatientsForDoctor);
 
+//search patients by firstName or lastName
+
 router.get('/current',authenticatejwt,patientcontroller.getCurrentPatient);
 
 router.post('/:id',authenticatejwt,patientcontroller.updatePatient);
