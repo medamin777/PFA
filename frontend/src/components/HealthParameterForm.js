@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import api from '../services/api';
-import { toast,ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const HealthParameterForm = ({onAdded}) => {
   const [formData, setFormData] = useState({
@@ -29,7 +29,7 @@ const HealthParameterForm = ({onAdded}) => {
 
   return (
     <div>
-    <ToastContainer/>
+
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
         <label className="block text-sm font-medium text-gray-700">Blood Pressure</label>

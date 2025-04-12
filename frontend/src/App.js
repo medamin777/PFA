@@ -11,15 +11,19 @@ import AddPatient from './pages/AddPatient';
 import PatientDetails from './pages/PatientDetails';
 import HealthParametersPage from './pages/HealthParameters'
 import PrescriptionPage from './pages/PrescriptionPage';
-
+import DoctorAppointments from './pages/DoctorAppointments';
+import DoctorProfile from './pages/DoctorProfile';
+import {ToastContainer} from 'react-toastify';
 // Create this page
 
 function App() {
   return (
     <Router>
     <div className="min-h-screen bg-gray-100">
+     
       <Navbar />
       <div className="pt-16"> 
+        <ToastContainer position="top-right" autoClose={2000} />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
@@ -30,7 +34,10 @@ function App() {
           <Route path="/patient-details/:id" element={<PatientDetails/>}/>
           <Route path="/patient-dashboard" element={<HealthParametersPage/>}/>
           <Route path="/patient/prescriptions" element={<PrescriptionPage/>}/>
-          {/* Add other routes here */}
+          <Route path="/doctor/appointments" element={<DoctorAppointments/>}/>
+          <Route path="/doctor/profile" element={<DoctorProfile/>}/>
+          
+          {/* Add other routes here */} 
         </Routes>
       </div>
       <Footer />

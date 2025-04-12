@@ -46,6 +46,9 @@ function DoctorDashboard() {
   };
 
   const handleDeletePatient = async (patientId) => {
+    const confirmDelete = window.confirm('Are you sure you want to delete this patient?');
+    if(!confirmDelete)
+      return
     try {
       await api.deletePatient(patientId);
       fetchPatients(); // Refresh the list

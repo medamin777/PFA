@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { FileIcon, Plus, Clipboard ,Trash2} from 'lucide-react';
 import api from '../services/api';
 import { toast } from 'react-toastify';
-import { ToastContainer } from 'react-toastify';
 
 const Prescription = ({ prescriptions, patientId, setPrescriptions }) => {
   const [showAddForm, setShowAddForm] = useState(false);
@@ -58,7 +57,7 @@ const Prescription = ({ prescriptions, patientId, setPrescriptions }) => {
   }
   return (
     <div className="bg-white rounded-lg shadow-lg p-6">
-      <ToastContainer />
+  
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-xl font-semibold">Prescriptions</h2>
         <button
@@ -159,7 +158,7 @@ const Prescription = ({ prescriptions, patientId, setPrescriptions }) => {
       )}
 
       <div className="space-y-4">
-        {prescriptions.map((prescription) => (
+        {prescriptions?.map((prescription) => (
           <div
             key={prescription._id}
             className="bg-gray-50 p-4 rounded-lg border border-gray-200"

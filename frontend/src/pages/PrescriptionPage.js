@@ -3,7 +3,7 @@ import PatientSidebar from '../components/PatientSidebar';
 import api from '../services/api';
 import {toast} from 'react-toastify'
 import {FileText} from 'lucide-react'
-import {ToastContainer} from 'react-toastify';
+
 import Prescription from '../components/PrescriptionView';
 
 const PrescriptionPage=()=>{
@@ -64,7 +64,7 @@ const PrescriptionPage=()=>{
     }
     return (
         <div className="flex h-screen bg-gray-100">
-            <ToastContainer/>
+           
             <PatientSidebar patient={patient} />
             <div className="flex-1 overflow-auto">
                 <div className="p-8">

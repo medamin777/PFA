@@ -40,6 +40,7 @@ api.interceptors.response.use(
 }
 );
 api.getCurrentUser=()=> api.get('/users/current')
+api.updateUser=(data)=>api.put('/users/update',data);
 
 //patient Api:
 api.getCurrentPatient=()=>api.get('/patients/current');
@@ -48,9 +49,8 @@ api.getPatient=(id)=>api.get(`/patients/${id}`);
 api.addPatient=(data)=>api.post('/patients',data);
 api.updatePatient=(id,data)=>api.patch(`/patients/${id}`,data)
 api.deletePatient=(id)=>api.delete(`/patients/${id}`)
-api.searchPatients = (search) => api.get(`/patients/search?search=${encodeURIComponent(search)}`);
 
-//prescription Api:
+//prescription Api
 
 api.createPrescription=(id,data)=>api.post(`/prescriptions/${id}`,data);
 api.getPrescriptionsForPatient=(Patientid)=>api.get(`/prescriptions/${Patientid}`);
@@ -62,8 +62,16 @@ api.deletePrescription=(id)=>api.delete(`/prescriptions/${id}`);
 api.createHealthParameters=(data)=>api.post('/healthparameters',data);
 api.getHealthParametersForPatient=(patientId)=>api.get(`/healthparameters/${patientId}`)
 api.deleteHealthParameter=(id)=>api.delete(`/healthparameters/${id}`)
+
 //Notification 
 api.getNotificationsForUser=()=>api.get('/notifications');
 api.markNotificationAsRead=(id)=>api.patch(`/notifications/${id}/read`)
+
+//Appointment Api
+api.createAppointment=(id,data)=>api.post(`/appointments/${id}`,data);
+api.getAppointmentForPatient = (id) => api.get(`/appointments/patient/${id}`);
+api.getAppointmentForDoctor=()=>api.get('/appointments/doctor')
+api.deleteAppointment=(id)=>api.delete(`/appointments/${id}`);
+api.updateAppointment=(id,data)=>api.put(`/appointments/${id}`,data)
 
 export default api;

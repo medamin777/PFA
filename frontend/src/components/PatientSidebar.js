@@ -9,7 +9,7 @@ import getImageSrc from '../assets/ImageProfile';
 const PatientSidebar = ({ patient }) => {
   const [notifications, setNotifications] = useState([]);
   
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(()=>{
@@ -57,7 +57,7 @@ const PatientSidebar = ({ patient }) => {
     { icon: <Heart size={20} />, label: 'Health Parameters', path: '/patient-dashboard' },
     { icon: <FileText size={20} />, label: 'Prescriptions', path: '/patient/prescriptions'},
     { icon: <Calendar size={20} />, label: 'Appointments', path: '/patient/appointments' },
-    { icon: <User size={20} />, label: 'Profil', path: '/patient/health-history' },
+    { icon: <User size={20} />, label: 'Profile', path: '/patient/health-history' },
   ];
 
   return (
@@ -68,7 +68,7 @@ const PatientSidebar = ({ patient }) => {
       >
         <Menu size={24} />
       </button>
-      <div className={`fixed left-0 top-18 h-screen bg-gray-800 text-white transition-transform ${isOpen ? 'translate-x-0' : '-translate-x-full'}`} style={{ width: '16rem' }}>
+      <div className={`fixed left-0 top-18 h-screen bg-gray-800 text-white transition-transform overflow-y-auto ${isOpen ? 'translate-x-0' : '-translate-x-full'}`} style={{ width: '16rem' }}>
         <div className="p-4">
           <div className="flex items-center space-x-4 mb-6">
             <div className="w-16 h-16 rounded-full overflow-hidden">
@@ -79,7 +79,7 @@ const PatientSidebar = ({ patient }) => {
               />
               
             </div>
-            <div>
+            <div >
               <h2 className="font-semibold">{patient?.user?.firstName[0].toUpperCase() + patient?.user?.firstName.slice(1)} {patient?.user?.lastName[0].toUpperCase()+ patient?.user?.lastName.slice(1)}</h2>
               <p className="text-gray-400 text-sm">Patient</p>
             </div>
@@ -95,7 +95,7 @@ const PatientSidebar = ({ patient }) => {
                   {notifications.filter(n => !n.isRead).length}
                 </span>
          </div>
-        <div className="mt-2 space-y-2 max-h-48 overflow-y-auto">
+        <div className="mt-2 space-y-2 max-h-48 overflow-auto">
             {notifications.map((notification) => (
               <div
                 key={notification._id}

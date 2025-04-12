@@ -1,4 +1,4 @@
-// frontend/src/components/DoctorSidebar.js
+
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Bell, User, Users, Calendar, LogOut, Menu } from 'lucide-react';
@@ -56,7 +56,7 @@ const DoctorSidebar = ({ user }) => {
 
   const menuItems = [
     { icon: <Users size={20} />, label: 'Patients', path: '/doctor-dashboard' },
-    { icon: <Calendar size={20} />, label: 'Appointments', path: '/doctor/prescriptions' },
+    { icon: <Calendar size={20} />, label: 'Appointments', path: '/doctor/appointments' },
     { icon: <User size={20} />, label: 'Profile', path: '/doctor/profile' },
   ];
 

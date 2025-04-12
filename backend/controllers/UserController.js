@@ -35,7 +35,7 @@
             const isMatch=await bcrypt.compare(password,user.password);
             if (!isMatch)
                 return res.status(400).json({message:"invalid email/password"});
-            const token=jwt.sign({id:user._id,role:user.role,email},process.env.JWT_SECRET,{expiresIn:"10h"});
+            const token=jwt.sign({id:user._id,role:user.role,email},process.env.JWT_SECRET,{expiresIn:"12h"});
             res.status(200).json({"message":"user logged in successfully",token});  
         }catch(error)
         {
@@ -57,5 +57,34 @@
             console.log(error);
             res.status(500).json({error:"failed to get the current user"})
         }
+    }
+    //update user by id
+
+    exports.updateUser=async(req,res)=>{
+        const userId=req.user.id;
+        try{
+            const user=await User.findById(userId);
+            if(!user)
+                return res.status(400).json({message:"user not found"})
+            const {email,firstName,lastName,address,currentPassword,newPassword}=req.body;
+            if(currentPassword)
+            {
+                const isMatch=await bcrypt.compare(currentPassword,user.password)
+                if(!isMatch) return res.status(400).json({message:"current password is incorrect"})
+                user.password=await bcrypt.hash(newPassword,10);
+            }
+            if(email) user.email=email;
+            if(firstName) user.firstName=firstName;
+            if(lastName) user.lastName=lastName;
+            if(address) user.address=address;
+            if(req.file) user.profilePicture= `/uploads/${req.file.filename}`;
+            await user.save();
+            res.json({message:"user updated successfully",user})
+        }catch(error)
+        {
+            console.log(error)
+            res.json({message:error})
+        }
+
     }
 

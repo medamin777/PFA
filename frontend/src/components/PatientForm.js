@@ -1,6 +1,6 @@
 // frontend/src/components/PatientForm.js
 import React, { useState } from 'react';
-import { toast ,ToastContainer} from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import api from '../services/api';
 import '../index.css';
@@ -91,18 +91,6 @@ const PatientForm = ({ patient = null, onSubmit }) => {
   
     return (
         <div className="min-h-screen bg-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <ToastContainer 
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        /> 
         
       <div className="min-h-screen bg-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-lg w-full bg-white rounded-xl shadow-lg p-10">

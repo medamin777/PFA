@@ -12,4 +12,5 @@ router.post('/login',usercontroller.login);
 //route to get the Current User
 router.get('/current',authenticatejwt,usercontroller.getCurrentUser);
 
+router.put('/update',authenticatejwt,upload.single('profilePicture'),usercontroller.updateUser);
 module.exports=router;
