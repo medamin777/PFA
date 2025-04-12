@@ -212,7 +212,7 @@ const DoctorProfile = () => {
             type="submit"
             className="w-full mt-6 bg-yellow-500 text-white py-2 px-4 rounded-md hover:bg-yellow-600"
           >
-            Update Profile
+            Save Profile
           </button>
         </form>
       </div>

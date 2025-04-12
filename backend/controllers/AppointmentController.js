@@ -49,7 +49,7 @@ exports.getAppointmentsForDoctor=async(req,res)=>{
 exports.getAppointmentsForPatient=async(req,res)=>{
     const patientId=req.params.id;
     try{
-        const appointments=await Appointment.find({patient:patientId}).populate('patient', 'chronic_disease')
+        const appointments=await Appointment.find({patient:patientId}).populate('doctor').sort({date:1})
         res.json(appointments)
     }catch(error)
     {
@@ -71,7 +71,7 @@ exports.updateAppointment=async(req,res)=>{
             sender:req.user.id,
             receiver:patient.user,
             message:'Appointment Updated By Your Doctor',
-            link:'patient/appointments'
+            link:'/patient/appointments'
         })
         await notification.save();
         await appointment.save();

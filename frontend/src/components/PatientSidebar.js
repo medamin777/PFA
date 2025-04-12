@@ -68,7 +68,7 @@ const PatientSidebar = ({ patient }) => {
       >
         <Menu size={24} />
       </button>
-      <div className={`fixed left-0 top-18 h-screen bg-gray-800 text-white transition-transform overflow-y-auto ${isOpen ? 'translate-x-0' : '-translate-x-full'}`} style={{ width: '16rem' }}>
+      <div className={`fixed left-0 top-18 h-screen bg-gray-800 text-white transition-transform  ${isOpen ? 'translate-x-0 overflow-y-scroll' : '-translate-x-full'}`} style={{ width: '16rem' }}>
         <div className="p-4">
           <div className="flex items-center space-x-4 mb-6">
             <div className="w-16 h-16 rounded-full overflow-hidden">
@@ -95,7 +95,7 @@ const PatientSidebar = ({ patient }) => {
                   {notifications.filter(n => !n.isRead).length}
                 </span>
          </div>
-        <div className="mt-2 space-y-2 max-h-48 overflow-auto">
+        <div className="mt-2 space-y-2 max-h-48 overflow-y-scroll">
             {notifications.map((notification) => (
               <div
                 key={notification._id}
@@ -120,7 +120,7 @@ const PatientSidebar = ({ patient }) => {
                 </div>
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-2 overflow-auto">
             {menuItems.map((item, index) => (
               <Link
                 key={index}
