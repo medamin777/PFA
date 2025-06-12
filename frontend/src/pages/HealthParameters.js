@@ -5,7 +5,6 @@ import AddHealthParameterForm from '../components/HealthParameterForm';
 import api from '../services/api';
 import { toast } from 'react-toastify';
 import '../index.css';
-
 const HealthParametersPage = () => {
   const[patient,setPatient]=useState(null);
   const [parameters, setParameters] = useState([]);
@@ -98,7 +97,8 @@ const HealthParametersPage = () => {
                   Cancel
                 </button>
               </div>
-              <AddHealthParameterForm onAdded={() => setParameterAdded(true)} />
+              <AddHealthParameterForm onAdded={() => setParameterAdded(true)} onClose={hideForm}
+             />
             </div>
           )}
 

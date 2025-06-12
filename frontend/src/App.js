@@ -15,7 +15,7 @@ import DoctorAppointments from './pages/DoctorAppointments';
 import DoctorProfile from './pages/DoctorProfile';
 import PatientAppointments from './pages/PatientAppointments';
 import {ToastContainer} from 'react-toastify';
-// Create this page
+
 
 function App() {
   return (
@@ -38,7 +38,6 @@ function App() {
           <Route path="/doctor/appointments" element={<DoctorAppointments/>}/>
           <Route path="/doctor/profile" element={<DoctorProfile/>}/>
           <Route path="/patient/appointments" element={<PatientAppointments/>}/>
-          
           {/* Add other routes here */} 
         </Routes>
       </div>

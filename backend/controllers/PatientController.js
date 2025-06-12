@@ -1,11 +1,10 @@
 const Patient=require("../models/Patient");
-
 const user=require("../models/User");
 const bcrypt=require("bcrypt");
 const User = require("../models/User");
 const sendPasswordByEmail=require("../utils/Send");
-
-
+const fs=require("fs")
+const path=require("path");
 
 exports.createPatient=async(req,res)=>{
     const {date_of_birth,gender,chronic_disease,phone_number,address,email,firstName,lastName}=req.body;
@@ -115,14 +114,22 @@ exports.deletePatient=async(req,res)=>{
     const {id}=req.params;
     const doctorId=req.user.id;
     try{
-        const patient=await Patient.findById(id);
+        const patient=await Patient.findById(id).populate('user');
         if(!patient)
             return res.status(404).json({message:"patient not found"});
         if(patient.doctor.toString()!==doctorId)
             return res.status(403).json({message:"unauthorized"});
-
+        if(patient.user.profilePicture)
+        {
+            const absolutePath=path.join(__dirname,patient.user.profilePicture);
+            fs.unlink(absolutePath,(err)=>{
+                if(err)
+                    console.log("failed to delete the profile picture")
+            });
+        }
         await Patient.findByIdAndDelete(id);
         await User.findByIdAndDelete(patient.user);
+    
         res.json({message:"patient deleted successfully"});
     }catch(error)
     {

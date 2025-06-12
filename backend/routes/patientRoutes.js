@@ -15,12 +15,13 @@ router.get('/',authenticatejwt,patientcontroller.getAllPatientsForDoctor);
 router.get('/current',authenticatejwt,patientcontroller.getCurrentPatient);
 
 router.post('/:id',authenticatejwt,patientcontroller.updatePatient);
+
 //get patient ById
 router.get('/:id',authenticatejwt,patientcontroller.getPatientForDcotor);
 
 
 // delete a patient
 
-router.delete('/:id',authenticatejwt,patientcontroller.deletePatient);
+router.delete('/:id',authenticatejwt,upload.single('profilePicture'),patientcontroller.deletePatient);
 
 module.exports=router;

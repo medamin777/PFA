@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { getCurrentUser, isAuthenticated, logout } from '../services/auth';
-import Logo from '../assets/healthLogo.jpg';
+import logo from '../assets/healthLogo.jpg';
 import getImageSrc from '../assets/ImageProfile';
 import "../index.css";
 
@@ -60,7 +60,7 @@ export default function Navbar() {
           <div className="flex items-center space-x-3">
             <img
               className="h-11 w-11"
-              src={Logo}
+              src={logo}
               alt="Health Logo"
               onClick={() => navigate('/')}
             />
@@ -78,7 +78,7 @@ export default function Navbar() {
           onClick={()=>navigate("/")}>
           <img
             className="h-11 w-11"
-            src={Logo}
+            src={logo}
             alt="Health Logo"
     
           />

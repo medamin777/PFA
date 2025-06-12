@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import api from '../services/api';
 import { toast } from 'react-toastify';
 
-const HealthParameterForm = ({onAdded}) => {
+const HealthParameterForm = ({onAdded,onClose}) => {
   const [formData, setFormData] = useState({
     blood_pressure: '',
     heart_rate: '',
@@ -19,7 +19,7 @@ const HealthParameterForm = ({onAdded}) => {
       await api.createHealthParameters(formData);
       toast.success('Health parameters added successfully');
       onAdded();
-    
+      onClose();
       //fetch health parameters for the patient
     
     } catch (error) {

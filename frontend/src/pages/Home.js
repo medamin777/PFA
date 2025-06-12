@@ -7,8 +7,7 @@ function HomePage() {
     <div >
       <DoctorSection />
       <PatientSection/>
-      <HomeSection />
-
+      <HomeSection/>
     </div>
   );
 }

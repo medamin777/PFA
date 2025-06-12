@@ -20,7 +20,7 @@ const PatientAppointments=()=>{
     
     const fetchAppointments=async()=>{
         try{
-            setLoading(true);
+           
             const response=await api.getAppointmentForPatient(patient._id);
             setAppointments(response.data);
             setLoading(false);
